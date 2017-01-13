@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2144.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 
 import org.usfirst.frc.team2144.robot.commands.ExampleCommand;
@@ -9,17 +10,31 @@ import org.usfirst.frc.team2144.robot.commands.ExampleCommand;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-	//// CREATING BUTTONS
-	// One type of button is a joystick button which is any button on a
-	//// joystick.
-	// You create one by telling it which joystick it's on and which button
-	// number it is.
-	// Joystick stick = new Joystick(port);
-	// Button button = new JoystickButton(stick, buttonNumber);
+	private Joystick left = new Joystick(0);
+	private Joystick right = new Joystick(1);
+	
+	public double getStickX() {
+		return left.getX();
+	}
 
-	// There are a few additional built in buttons you can use. Additionally,
-	// by subclassing Button you can create custom triggers and bind those to
-	// commands the same as any other Button.
+	/**
+	 * returns non-inverted Y
+	 */
+	public double getStickY() {
+		return left.getY();
+	}
+	
+	public double getStickRot() {
+		return left.getTwist();
+	}
+
+	public double getStick2X() {
+		return right.getX();
+	}
+
+	public double getStick2Y() {
+		return right.getY();
+	}
 
 	//// TRIGGERING COMMANDS WITH BUTTONS
 	// Once you have a button, it's trivial to bind it to a button in one of
