@@ -37,8 +37,8 @@ public class OI {
 		return right.getTwist();
 	}
 
-	public double getStick2Mecanum() {
-		return 0;
+	public boolean getStick2Mecanum() {
+		return right.getRawButton(2);
 	}
 
 	//// TRIGGERING COMMANDS WITH BUTTONS
