@@ -1,7 +1,6 @@
 package org.usfirst.frc.team2144.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.Button;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -10,7 +9,7 @@ import edu.wpi.first.wpilibj.buttons.Button;
 public class OI {
 	private Joystick left = new Joystick(0);
 	private Joystick right = new Joystick(1);
-	
+
 	public double getStickX() {
 		return left.getX();
 	}
@@ -21,7 +20,7 @@ public class OI {
 	public double getStickY() {
 		return left.getY();
 	}
-	
+
 	public double getStickRot() {
 		return left.getTwist();
 	}
@@ -32,6 +31,14 @@ public class OI {
 
 	public double getStick2Y() {
 		return right.getY();
+	}
+
+	public double getStick2Rot() {
+		return right.getTwist();
+	}
+
+	public double getStick2Mecanum() {
+		return 0;
 	}
 
 	//// TRIGGERING COMMANDS WITH BUTTONS

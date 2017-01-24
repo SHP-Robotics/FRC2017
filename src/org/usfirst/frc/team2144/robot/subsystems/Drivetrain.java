@@ -30,6 +30,12 @@ public class Drivetrain extends Subsystem {
 	public void mecanum_cartesian(double x, double y, double rotation, double gyro) {
 		robit.mecanumDrive_Cartesian(x, y, rotation, gyro);
 	}
+	
+	public void tank(double left, double right) {
+		left = -left;
+		right = -right;
+		robit.tankDrive(left, right, true);
+	}
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
