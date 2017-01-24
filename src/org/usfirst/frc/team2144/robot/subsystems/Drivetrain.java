@@ -23,6 +23,8 @@ public class Drivetrain extends Subsystem {
 		m_front_right = new Talon(RobotMap.FRONT_RIGHT_MOTOR);
 		m_back_right = new Talon(RobotMap.BACK_RIGHT_MOTOR);
 		robit = new RobotDrive(m_front_left, m_back_left, m_front_right, m_back_right);
+		m_front_right.setInverted(true);
+		m_back_right.setInverted(true);
 	}
 	
 	public void mecanum_cartesian(double x, double y, double rotation, double gyro) {
