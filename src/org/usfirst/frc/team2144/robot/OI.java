@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2144.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -9,6 +10,8 @@ import edu.wpi.first.wpilibj.Joystick;
 public class OI {
 	private Joystick left = new Joystick(0);
 	private Joystick right = new Joystick(1);
+
+	private JoystickButton fireButton = new JoystickButton(right, 1);
 
 	public double getStickX() {
 		return left.getX();
@@ -38,7 +41,11 @@ public class OI {
 	}
 
 	public boolean getStick2Mecanum() {
-		return right.getRawButton(2);
+		return right.getRawButton(ControlMap.B_MECANUM);
+	}
+	
+	public boolean getFireButton() {
+		return right.getRawButton(ControlMap.B_FIRE);
 	}
 
 	//// TRIGGERING COMMANDS WITH BUTTONS

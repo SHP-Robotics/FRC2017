@@ -2,6 +2,7 @@ package org.usfirst.frc.team2144.robot.subsystems;
 
 import org.usfirst.frc.team2144.robot.Constants;
 import org.usfirst.frc.team2144.robot.RobotMap;
+import org.usfirst.frc.team2144.robot.commands.ShooterShoot;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Talon;
@@ -17,25 +18,24 @@ public class Shooter extends PIDSubsystem {
 
     // Initialize your subsystem here
     public Shooter() {
-    	super("Shooter", Constants.K_SHOOTER_P, Constants.K_SHOOTER_I, Constants.K_SHOOTER_D);
+    	super("Shooter", Constants.K_SHOOTER_P, Constants.K_SHOOTER_I, Constants.K_SHOOTER_D, Constants.K_SHOOTER_F);
     	encoder = new Encoder(RobotMap.FLYWHEEL_ENC_A, RobotMap.FLYWHEEL_ENC_B);
-    	setInputRange(-1, 1);
+    	encoder.setDistancePerPulse(1/20);
     	setOutputRange(-1, 1);
-        setSetpoint(0);
+        setSetpoint(0); // for shooting we want to target 75 rps
     	setAbsoluteTolerance(Constants.K_SHOOTER_TOLERANCE);
-    	enable();
     }
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new ShooterShoot());
     }
 
     protected double returnPIDInput() {
         // Return your input value for the PID loop
         // e.g. a sensor, like a potentiometer:
         // yourPot.getAverageVoltage() / kYourMaxVoltage;
-        return encoder.getRate();
+        return encoder.getRate(); // rev/sec
     }
 
     protected void usePIDOutput(double output) {
