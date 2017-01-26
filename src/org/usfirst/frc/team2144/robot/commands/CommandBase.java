@@ -5,6 +5,7 @@ import org.usfirst.frc.team2144.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team2144.robot.subsystems.Shooter;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
@@ -30,9 +31,8 @@ public abstract class CommandBase extends Command {
 		oi = new OI();
 
 		// Show what command your subsystem is running on the SmartDashboard
-		// SmartDashboard.putData(drivetrain);
-		// SmartDashboard.putData(intake);
-		// SmartDashboard.putData(intakePitch);
+		SmartDashboard.putData(drivetrain);
+		SmartDashboard.putData(shooter);
 
 	}
 

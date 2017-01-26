@@ -26,7 +26,7 @@ public class ShooterShoot extends CommandBase {
 			return;
 		}
 		if (shooter.onTarget()) {
-			// Placeholder - engage fire intake motor here
+			shooter.setIntake(Constants.D_SHOOTER_INTAKE_PWR);
 		}
 		
 	}
