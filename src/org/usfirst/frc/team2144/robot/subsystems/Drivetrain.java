@@ -18,6 +18,7 @@ public class Drivetrain extends Subsystem {
 	private Talon m_front_left, m_back_left, m_front_right, m_back_right;
 	
 	public Drivetrain() {
+		super("Drivetrain");
 		m_front_left = new Talon(RobotMap.FRONT_LEFT_MOTOR);
 		m_back_left = new Talon(RobotMap.BACK_LEFT_MOTOR);
 		m_front_right = new Talon(RobotMap.FRONT_RIGHT_MOTOR);

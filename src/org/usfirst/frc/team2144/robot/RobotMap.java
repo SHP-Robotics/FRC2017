@@ -12,4 +12,9 @@ public class RobotMap {
 	public static int BACK_LEFT_MOTOR = 1;
 	public static int FRONT_RIGHT_MOTOR = 2;
 	public static int BACK_RIGHT_MOTOR = 3;
+	
+	// DIO
+	public static int FLYWHEEL_ENC_A = 0;
+	public static int FLYWHEEL_ENC_B = 1;
+	
 }
