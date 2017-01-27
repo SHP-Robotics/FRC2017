@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2144.robot.commands;
 
 import org.usfirst.frc.team2144.robot.OI;
+import org.usfirst.frc.team2144.robot.subsystems.Camera;
 import org.usfirst.frc.team2144.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team2144.robot.subsystems.Shooter;
 
@@ -21,6 +22,7 @@ public abstract class CommandBase extends Command {
 	// Create a single static instance of all of your subsystems
 	public static Drivetrain drivetrain = new Drivetrain();
 	public static Shooter shooter = new Shooter();
+	public static Camera camera = new Camera();
 
 	public static void init() {
 		// This MUST be here. If the OI creates Commands (which it very likely

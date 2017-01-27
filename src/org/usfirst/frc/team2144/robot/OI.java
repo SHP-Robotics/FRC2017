@@ -47,6 +47,10 @@ public class OI {
 	public boolean getFireButton() {
 		return right.getRawButton(ControlMap.B_FIRE);
 	}
+	
+	public int getStick2POV() {
+		return right.getPOV();
+	}
 
 	//// TRIGGERING COMMANDS WITH BUTTONS
 	// Once you have a button, it's trivial to bind it to a button in one of
