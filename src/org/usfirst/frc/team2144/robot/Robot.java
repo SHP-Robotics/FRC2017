@@ -2,6 +2,7 @@
 package org.usfirst.frc.team2144.robot;
 
 import org.usfirst.frc.team2144.robot.commands.CommandBase;
+import org.usfirst.frc.team2144.robot.commands.VProc;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -23,6 +24,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 
 	Command autonomousCommand;
+	Command vProc;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
 	/**
@@ -37,6 +39,8 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Auto mode", chooser);
 		
 		CommandBase.init();
+		vProc = new VProc();
+		vProc.start();
 	}
 
 	/**
