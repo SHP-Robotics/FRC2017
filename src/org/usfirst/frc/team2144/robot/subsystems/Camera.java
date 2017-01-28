@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2144.robot.subsystems;
 
 import org.opencv.core.Mat;
+import org.usfirst.frc.team2144.robot.commands.VProc;
 
 import edu.wpi.cscore.AxisCamera;
 import edu.wpi.cscore.CvSink;
@@ -13,8 +14,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Camera extends Subsystem {
 
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
+	// Put methods for controlling this subsystem
+	// here. Call these from Commands.
 	public AxisCamera camera;
 	public CvSink cvSink;
 	public CvSource outputStream;
@@ -25,7 +26,10 @@ public class Camera extends Subsystem {
 		// Get the Axis camera from CameraServer
 		camera = CameraServer.getInstance().addAxisCamera("Shooter Cam", "axis-camera.local");
 		// Set the resolution
-		camera.setResolution(640, 480);
+		camera.setResolution(320, 240);
+	}
+
+	public void init() {
 		// Get a CvSink. This will capture Mats from the camera
 		cvSink = CameraServer.getInstance().getVideo();
 		// Setup a CvSource. This will send images back to the Dashboard
@@ -35,9 +39,8 @@ public class Camera extends Subsystem {
 		mat = new Mat();
 	}
 
-    public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
-    }
+	public void initDefaultCommand() {
+		// Set the default command for a subsystem here.
+		setDefaultCommand(new VProc());
+	}
 }
-
