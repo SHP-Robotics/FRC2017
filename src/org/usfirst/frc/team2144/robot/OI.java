@@ -11,8 +11,6 @@ public class OI {
 	private Joystick left = new Joystick(0);
 	private Joystick right = new Joystick(1);
 
-	private JoystickButton fireButton = new JoystickButton(right, 1);
-
 	public double getStickX() {
 		return left.getX();
 	}

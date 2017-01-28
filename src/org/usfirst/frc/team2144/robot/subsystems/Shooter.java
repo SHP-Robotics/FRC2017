@@ -4,9 +4,11 @@ import org.usfirst.frc.team2144.robot.Constants;
 import org.usfirst.frc.team2144.robot.RobotMap;
 import org.usfirst.frc.team2144.robot.commands.ShooterShoot;
 
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -32,6 +34,10 @@ public class Shooter extends PIDSubsystem {
 	public void setIntake(double power) {
 		intake.set(power);
 	}
+	
+	public double getEncRate() {
+		return encoder.getRate();
+	}
 
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
@@ -42,6 +48,7 @@ public class Shooter extends PIDSubsystem {
 		// Return your input value for the PID loop
 		// e.g. a sensor, like a potentiometer:
 		// yourPot.getAverageVoltage() / kYourMaxVoltage;
+		SmartDashboard.putNumber("Flywheel Rate", encoder.getRate());
 		return encoder.getRate(); // rev/sec
 	}
 

@@ -2,6 +2,8 @@ package org.usfirst.frc.team2144.robot.commands;
 
 import org.usfirst.frc.team2144.robot.Constants;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 /**
  *
  */
@@ -19,6 +21,8 @@ public class ShooterShoot extends CommandBase {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
+		SmartDashboard.putBoolean("test", oi.getFireButton());
+		SmartDashboard.putNumber("Flywheel Rate", shooter.getEncRate());
 		if (oi.getFireButton()) {
 			shooter.setSetpoint(Constants.D_SHOOTER_FIRE);
 		} else {

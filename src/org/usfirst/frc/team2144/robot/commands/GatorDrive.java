@@ -17,7 +17,7 @@ public class GatorDrive extends CommandBase {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		if (oi.getStick2Mecanum()) {
-			drivetrain.mecanum_cartesian(oi.getStick2X(), oi.getStick2Y(), oi.getStick2Rot(), 0);
+			drivetrain.mecanum_cartesian(oi.getStick2X(), oi.getStick2Y(), oi.getStick2Rot() * Math.abs(oi.getStick2Rot()), 0);
 		} else {
 			drivetrain.tank(oi.getStickY(), oi.getStick2Y());
 		}
