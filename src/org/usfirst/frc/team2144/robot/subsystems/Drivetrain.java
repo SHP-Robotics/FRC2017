@@ -34,7 +34,6 @@ public class Drivetrain extends Subsystem {
 	
 	public void tank(double left, double right) {
 		left = -left;
-		right = -right;
 		robit.tankDrive(left, right, true);
 	}
 
