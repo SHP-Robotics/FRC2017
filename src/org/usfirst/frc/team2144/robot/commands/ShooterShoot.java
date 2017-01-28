@@ -2,12 +2,16 @@ package org.usfirst.frc.team2144.robot.commands;
 
 import org.usfirst.frc.team2144.robot.Constants;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
 public class ShooterShoot extends CommandBase {
+	private int lastMeasurement;
+	private int targetSpeed;
+	private double output;
 
 	public ShooterShoot() {
 		// Use requires() here to declare subsystem dependencies
@@ -16,23 +20,28 @@ public class ShooterShoot extends CommandBase {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		shooter.enable();
+		lastMeasurement = shooter.getEnc();
+		targetSpeed = 0;
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		SmartDashboard.putBoolean("test", oi.getFireButton());
-		SmartDashboard.putNumber("Flywheel Rate", shooter.getEncRate());
-		if (oi.getFireButton()) {
-			shooter.setSetpoint(Constants.D_SHOOTER_FIRE);
+		int delta = shooter.getEnc() - lastMeasurement; // pulses per 1/20th of a sec (should be 83 @ 5000 RPM)
+		lastMeasurement = shooter.getEnc();
+		targetSpeed = oi.getFireButton() ? Constants.D_SHOOTER_FIRE : Constants.D_SHOOTER_REST;
+		int error = targetSpeed - delta;
+		if (targetSpeed != 0) {
+			output += error / 100;
+			output = output > 1 ? 1 : output < -1 ? -1 : output; 
 		} else {
-			shooter.setSetpoint(Constants.D_SHOOTER_REST);
-			return;
+			output = 0;
 		}
-		if (shooter.onTarget()) {
+		shooter.setFlywheel(output);
+		
+		if (Math.abs(error) < Constants.K_SHOOTER_TOLERANCE) {
 			shooter.setIntake(Constants.D_SHOOTER_INTAKE_PWR);
 		}
-		
+		Timer.delay(0.05); // 20/sec
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -42,7 +51,6 @@ public class ShooterShoot extends CommandBase {
 
 	// Called once after isFinished returns true
 	protected void end() {
-		shooter.disable();
 	}
 
 	// Called when another command which requires one or more of the same

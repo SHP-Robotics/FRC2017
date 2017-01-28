@@ -23,13 +23,13 @@ public class Camera extends Subsystem {
 
 	public Camera() {
 		super("Camera");
+	}
+
+	public void init() {
 		// Get the Axis camera from CameraServer
 		camera = CameraServer.getInstance().addAxisCamera("Shooter Cam", "axis-camera.local");
 		// Set the resolution
 		camera.setResolution(320, 240);
-	}
-
-	public void init() {
 		// Get a CvSink. This will capture Mats from the camera
 		cvSink = CameraServer.getInstance().getVideo();
 		// Setup a CvSource. This will send images back to the Dashboard
