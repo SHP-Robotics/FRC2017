@@ -4,7 +4,6 @@ import org.usfirst.frc.team2144.robot.Constants;
 import org.usfirst.frc.team2144.robot.RobotMap;
 import org.usfirst.frc.team2144.robot.commands.ShooterShoot;
 
-import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
@@ -23,7 +22,7 @@ public class Shooter extends PIDSubsystem {
 	public Shooter() {
 		super("Shooter", Constants.K_SHOOTER_P, Constants.K_SHOOTER_I, Constants.K_SHOOTER_D, Constants.K_SHOOTER_F);
 		encoder = new Encoder(RobotMap.FLYWHEEL_ENC_A, RobotMap.FLYWHEEL_ENC_B);
-		encoder.setDistancePerPulse(1 / 20); // 20 ppr
+		encoder.setDistancePerPulse(1); // 40 ppr
 		setOutputRange(-1, 1);
 		setSetpoint(0); // for shooting we want to target 75 rps
 		setAbsoluteTolerance(Constants.K_SHOOTER_TOLERANCE);
@@ -34,7 +33,7 @@ public class Shooter extends PIDSubsystem {
 	public void setIntake(double power) {
 		intake.set(power);
 	}
-	
+
 	public double getEncRate() {
 		return encoder.getRate();
 	}
@@ -48,8 +47,8 @@ public class Shooter extends PIDSubsystem {
 		// Return your input value for the PID loop
 		// e.g. a sensor, like a potentiometer:
 		// yourPot.getAverageVoltage() / kYourMaxVoltage;
-		SmartDashboard.putNumber("Flywheel Rate", encoder.getRate());
-		return encoder.getRate(); // rev/sec
+		SmartDashboard.putNumber("Flywheel Rate", encoder.getRate() / 40);
+		return encoder.getRate() / 40; // rev/sec, 40ppr
 	}
 
 	protected void usePIDOutput(double output) {
