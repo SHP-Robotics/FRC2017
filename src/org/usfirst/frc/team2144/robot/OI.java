@@ -1,5 +1,7 @@
 package org.usfirst.frc.team2144.robot;
 
+import org.usfirst.frc.team2144.robot.commands.ShooterShootVision;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -8,8 +10,15 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+	
 	private Joystick left = new Joystick(0);
 	private Joystick right = new Joystick(1);
+		
+	private JoystickButton visionShoot = new JoystickButton(right, 3);
+	
+	public OI() {
+		visionShoot.whileHeld(new ShooterShootVision());
+	}
 
 	public double getStickX() {
 		return left.getX();
@@ -49,6 +58,8 @@ public class OI {
 	public int getStick2POV() {
 		return right.getPOV();
 	}
+	
+	
 
 	//// TRIGGERING COMMANDS WITH BUTTONS
 	// Once you have a button, it's trivial to bind it to a button in one of

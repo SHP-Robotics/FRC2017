@@ -36,6 +36,14 @@ public class Drivetrain extends Subsystem {
 		left = -left;
 		robit.tankDrive(left, right, true);
 	}
+	
+	public void arcade(double spd, double rot) {
+		robit.arcadeDrive(spd, rot);
+	}
+	
+	public void arcade(double spd, double rot, boolean squared) {
+		robit.arcadeDrive(spd, rot, squared);
+	}
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
