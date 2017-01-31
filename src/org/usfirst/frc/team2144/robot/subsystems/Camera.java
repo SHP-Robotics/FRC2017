@@ -64,6 +64,11 @@ public class Camera extends Subsystem {
 					centerX = r.x + (r.width / 2);
 					centerY = r.y + (r.height / 2);
 				}
+			} else {
+				synchronized (imgLock) {
+					centerX = -1;
+					centerY = -1;
+				}
 			}
 		});
 		visionThread.start();

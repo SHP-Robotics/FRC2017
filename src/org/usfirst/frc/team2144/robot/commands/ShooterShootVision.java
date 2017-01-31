@@ -41,12 +41,16 @@ public class ShooterShootVision extends CommandBase {
 			centerX = camera.centerX;
 			centerY = camera.centerY;
 		}
-		double turn = centerX - camera.target[0]; // negative if to left of target,
-											// else positive
-		double drv = centerY - camera.target[1]; // negative if to bottom of target,
-											// else positive
+		double turn = centerX == -1 ? 0 : centerX - camera.target[0];
+		// negative if to left of target, else positive
+		double drv = centerY == -1 ? 0 : centerY - camera.target[1];
+		// negative if to bottom of target, else positive
 		drivetrain.arcade(drv * 0.005, -turn * 0.005, false);
-		return Math.abs(turn) < Constants.K_VISION_TOLERANCE && Math.abs(drv) < Constants.K_VISION_TOLERANCE;
+		if (centerX == -1 || centerY == -1) {
+			return false;
+		} else {
+			return Math.abs(turn) < Constants.K_VISION_TOLERANCE && Math.abs(drv) < Constants.K_VISION_TOLERANCE;
+		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
