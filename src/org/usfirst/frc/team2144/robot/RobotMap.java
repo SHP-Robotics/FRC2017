@@ -16,6 +16,8 @@ public class RobotMap {
 	public static int FLYWHEEL_SHOOTER = 4;
 	public static int FLYWHEEL_INTAKE = 5;
 	
+	public static int INTAKE_MOTOR = 6;
+	
 	// DIO
 	public static int FLYWHEEL_ENC_A = 0;
 	public static int FLYWHEEL_ENC_B = 1;
