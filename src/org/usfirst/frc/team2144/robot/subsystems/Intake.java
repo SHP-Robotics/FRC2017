@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2144.robot.subsystems;
 
 import org.usfirst.frc.team2144.robot.RobotMap;
+import org.usfirst.frc.team2144.robot.commands.IntakeDrive;
 
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -20,7 +21,7 @@ public class Intake extends Subsystem {
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new IntakeDrive());
     }
     
     public void setIntakeMotor(double power) {
