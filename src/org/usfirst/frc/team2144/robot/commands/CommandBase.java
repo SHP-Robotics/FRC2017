@@ -3,6 +3,7 @@ package org.usfirst.frc.team2144.robot.commands;
 import org.usfirst.frc.team2144.robot.OI;
 import org.usfirst.frc.team2144.robot.subsystems.Camera;
 import org.usfirst.frc.team2144.robot.subsystems.Drivetrain;
+import org.usfirst.frc.team2144.robot.subsystems.Intake;
 import org.usfirst.frc.team2144.robot.subsystems.Shooter;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -23,6 +24,7 @@ public abstract class CommandBase extends Command {
 	public static Drivetrain drivetrain = new Drivetrain();
 	public static Shooter shooter = new Shooter();
 	public static Camera camera = new Camera();
+	public static Intake intake = new Intake();
 
 	public static void init() {
 		// This MUST be here. If the OI creates Commands (which it very likely

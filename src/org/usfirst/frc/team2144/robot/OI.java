@@ -59,6 +59,9 @@ public class OI {
 		return right.getPOV();
 	}
 	
+	public double getIntakePower() {
+		return right.getRawButton(ControlMap.B_INTAKE) ? 1 : 0;
+	}
 	
 
 	//// TRIGGERING COMMANDS WITH BUTTONS

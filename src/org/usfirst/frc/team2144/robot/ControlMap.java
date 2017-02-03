@@ -6,4 +6,5 @@ public class ControlMap {
 	// right stick
 	public static int B_MECANUM = 2;
 	public static int B_FIRE = 1;
+	public static int B_INTAKE = 3;
 }
