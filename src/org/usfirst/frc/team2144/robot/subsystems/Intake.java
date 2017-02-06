@@ -25,7 +25,7 @@ public class Intake extends Subsystem {
     }
     
     public void setIntakeMotor(double power) {
-    	intakeMotor.set(power);
+    	intakeMotor.set(-power);
     }
 }
 
