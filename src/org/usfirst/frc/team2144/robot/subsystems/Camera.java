@@ -15,11 +15,12 @@ import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.vision.VisionThread;
 import vproc.GripPipeline;
+import vproc.VProcSubsystem;
 
 /**
  *
  */
-public class Camera extends Subsystem {
+public class Camera extends VProcSubsystem {
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.

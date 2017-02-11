@@ -60,7 +60,7 @@ public class OI {
 	}
 	
 	public double getIntakePower() {
-		return right.getRawButton(ControlMap.B_INTAKE) ? 1 : 0;
+		return right.getRawButton(ControlMap.B_INTAKE) ? 1 : 0.1;
 	}
 	
 

@@ -4,10 +4,12 @@ import org.usfirst.frc.team2144.robot.OI;
 import org.usfirst.frc.team2144.robot.subsystems.Camera;
 import org.usfirst.frc.team2144.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team2144.robot.subsystems.Intake;
+import org.usfirst.frc.team2144.robot.subsystems.NoCamera;
 import org.usfirst.frc.team2144.robot.subsystems.Shooter;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import vproc.VProcSubsystem;
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
@@ -23,7 +25,7 @@ public abstract class CommandBase extends Command {
 	// Create a single static instance of all of your subsystems
 	public static Drivetrain drivetrain = new Drivetrain();
 	public static Shooter shooter = new Shooter();
-	public static Camera camera = new Camera();
+	public static VProcSubsystem camera = new NoCamera();
 	public static Intake intake = new Intake();
 
 	public static void init() {
