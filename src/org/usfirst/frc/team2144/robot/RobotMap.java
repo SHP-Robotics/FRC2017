@@ -18,6 +18,8 @@ public class RobotMap {
 	
 	public static int INTAKE_MOTOR = 6;
 	
+	public static int GEAR_MOTOR = 7;
+	
 	// DIO
 	public static int FLYWHEEL_ENC_A = 0;
 	public static int FLYWHEEL_ENC_B = 1;
@@ -26,5 +28,8 @@ public class RobotMap {
 	public static int BACK_LEFT_ENC_B = 3;
 	public static int BACK_RIGHT_ENC_A = 6;
 	public static int BACK_RIGHT_ENC_B = 7;
+	
+	// Analog
+	public static int GEAR_POT = 0;
 	
 }
