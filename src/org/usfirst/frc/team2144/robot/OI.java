@@ -67,6 +67,9 @@ public class OI {
 		return right.getRawButton(ControlMap.B_INTAKE) ? 1 : 0.1;
 	}
 	
+	public boolean getClimbButton() {
+		return left.getRawButton(ControlMap.B_CLIMB);
+	}
 
 	//// TRIGGERING COMMANDS WITH BUTTONS
 	// Once you have a button, it's trivial to bind it to a button in one of
