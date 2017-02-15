@@ -26,8 +26,12 @@ public class RobotMap {
 	public static final int FLYWHEEL_ENC_A = 8;
 	public static final int FLYWHEEL_ENC_B = 9;
 	
+	public static final int FRONT_LEFT_ENC_A = 0;
+	public static final int FRONT_LEFT_ENC_B = 1;
 	public static final int BACK_LEFT_ENC_A = 2;
 	public static final int BACK_LEFT_ENC_B = 3;
+	public static final int FRONT_RIGHT_ENC_A = 4;
+	public static final int FRONT_RIGHT_ENC_B = 5;
 	public static final int BACK_RIGHT_ENC_A = 6;
 	public static final int BACK_RIGHT_ENC_B = 7;
 	
