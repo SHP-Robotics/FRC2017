@@ -64,7 +64,7 @@ public class OI {
 	}
 	
 	public double getIntakePower() {
-		return right.getRawButton(ControlMap.B_INTAKE) ? 1 : 0.1;
+		return left.getRawButton(ControlMap.B_INTAKE) ? 1 : 0.1;
 	}
 	
 	public boolean getClimbButton() {

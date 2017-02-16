@@ -1,11 +1,11 @@
 package org.usfirst.frc.team2144.robot.commands;
 
 import org.usfirst.frc.team2144.robot.OI;
+import org.usfirst.frc.team2144.robot.subsystems.Camera;
 import org.usfirst.frc.team2144.robot.subsystems.Climber;
 import org.usfirst.frc.team2144.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team2144.robot.subsystems.GearManip;
 import org.usfirst.frc.team2144.robot.subsystems.Intake;
-import org.usfirst.frc.team2144.robot.subsystems.NoCamera;
 import org.usfirst.frc.team2144.robot.subsystems.Shooter;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -26,7 +26,7 @@ public abstract class CommandBase extends Command {
 	// Create a single static instance of all of your subsystems
 	public static Drivetrain drivetrain = new Drivetrain();
 	public static Shooter shooter = new Shooter();
-	public static VProcSubsystem camera = new NoCamera(); // change this to new VProc() to enable vproc
+	public static Camera camera = new Camera(); // change this to new Camera() to enable vproc
 	public static Intake intake = new Intake();
 	public static GearManip gearManip = new GearManip();
 	public static Climber climber = new Climber();
