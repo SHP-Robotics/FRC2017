@@ -26,11 +26,15 @@ public class ShooterShootVision extends CommandBase {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		shooter.setFlywheel(1);
+		shooter.setFlywheel(Constants.D_SHOOTER_MAN_PWR);
 		if (driveToTarget()) {
 			if (Timer.getFPGATimestamp() > startSpool + 1.0) {
 				shooter.setIntake(Constants.D_SHOOTER_INTAKE_PWR);
+			} else {
+				shooter.setIntake(0);
 			}
+		} else {
+			shooter.setIntake(0);
 		}
 	}
 
