@@ -40,6 +40,8 @@ public class ShooterShoot extends CommandBase {
 		
 		if (Math.abs(error) < Constants.K_SHOOTER_TOLERANCE) {
 			shooter.setIntake(Constants.D_SHOOTER_INTAKE_PWR);
+		} else {
+			shooter.setIntake(0);
 		}
 		Timer.delay(0.05); // 20/sec
 	}

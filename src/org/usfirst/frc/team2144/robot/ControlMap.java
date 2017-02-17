@@ -9,4 +9,5 @@ public class ControlMap {
 	public static final int B_MECANUM = 2;
 	public static final int B_FIRE = 1;
 	public static final int B_GEAR = 5;
+	public static final int B_VISION_FIRE = 3;
 }

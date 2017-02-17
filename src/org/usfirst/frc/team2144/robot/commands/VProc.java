@@ -5,6 +5,7 @@ import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.vision.VisionThread;
 import vproc.GripPipeline;
 
@@ -53,6 +54,7 @@ public class VProc extends CommandBase {
 					camera.target[0] += dX;
 					camera.target[1] += dY;
 				}
+				
 			}
 
 			// Tell the CvSink to grab a frame from the camera and put it
@@ -76,7 +78,8 @@ public class VProc extends CommandBase {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		
+		SmartDashboard.putNumber("TargetX", camera.target[0]);
+		SmartDashboard.putNumber("TargetY", camera.target[1]);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

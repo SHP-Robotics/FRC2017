@@ -34,7 +34,7 @@ public class Shooter extends Subsystem {
 
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
-		setDefaultCommand(new ShooterShoot());
+		//setDefaultCommand(new ShooterShoot());
 	}
 
 	public void setFlywheel(double power) {

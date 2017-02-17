@@ -14,7 +14,7 @@ public class OI {
 	private Joystick left = new Joystick(0);
 	private Joystick right = new Joystick(1);
 		
-	private JoystickButton visionShoot = new JoystickButton(right, 3);
+	private JoystickButton visionShoot = new JoystickButton(right, ControlMap.B_VISION_FIRE);
 	
 	public OI() {
 		visionShoot.whileHeld(new ShooterShootVision());
