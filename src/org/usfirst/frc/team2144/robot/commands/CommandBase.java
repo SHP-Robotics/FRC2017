@@ -6,11 +6,11 @@ import org.usfirst.frc.team2144.robot.subsystems.Climber;
 import org.usfirst.frc.team2144.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team2144.robot.subsystems.GearManip;
 import org.usfirst.frc.team2144.robot.subsystems.Intake;
+import org.usfirst.frc.team2144.robot.subsystems.Sensors;
 import org.usfirst.frc.team2144.robot.subsystems.Shooter;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import vproc.VProcSubsystem;
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
@@ -30,6 +30,7 @@ public abstract class CommandBase extends Command {
 	public static Intake intake = new Intake();
 	public static GearManip gearManip = new GearManip();
 	public static Climber climber = new Climber();
+	public static Sensors sensors = new Sensors();
 
 	public static void init() {
 		// This MUST be here. If the OI creates Commands (which it very likely
