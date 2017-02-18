@@ -4,7 +4,7 @@ public class Constants {
 	
 	// tolerances
 	public static final double K_SHOOTER_TOLERANCE = 0.5; // in rps
-	public static final double K_VISION_TOLERANCE = 3; // in px
+	public static final double K_VISION_TOLERANCE = 7; // in px
 	
 	// PID
 	public static final double K_GEAR_P = 15;
