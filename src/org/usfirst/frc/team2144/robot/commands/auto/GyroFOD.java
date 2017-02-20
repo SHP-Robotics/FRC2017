@@ -47,18 +47,19 @@ public class GyroFOD extends CommandBase {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		double turnSpeed, x, y;
+		double turnError, nyoomError, x, y;
 
+		turnError = (sensors.getYaw() + turnAngle) * 0.05;
+		turnError = turnError > turnSpeed ? turnSpeed : turnError < -turnSpeed ? -turnSpeed : turnError;
+		
+		nyoomError = Math.sqrt(linearDistance - sensors.getDisplacement());
+		nyoomError = nyoomError > nyoomSpeed ? nyoomSpeed : nyoomError < -nyoomSpeed ? -nyoomSpeed : nyoomError;
+		
 		if (sensors.getYaw() > turnAngle - Constants.K_TURN_TOLERANCE
 				&& sensors.getYaw() < turnAngle + Constants.K_TURN_TOLERANCE) {
 			turnComplete = true;
-			turnSpeed = 0;
 		} else {
 			turnComplete = false;
-			turnSpeed = this.turnSpeed;
-			if (sensors.getYaw() > turnAngle) {
-				turnSpeed = -turnSpeed;
-			}
 		}
 
 		if (sensors.getDisplacement() > linearDistance - Constants.K_DISP_TOLERANCE
@@ -68,11 +69,11 @@ public class GyroFOD extends CommandBase {
 			y = 0;
 		} else {
 			distanceComplete = false;
-			x = nyoomSpeed * Math.cos(Math.toRadians(travelAngle));
-			y = nyoomSpeed * Math.sin(Math.toRadians(travelAngle));
+			x = nyoomError * Math.cos(Math.toRadians(travelAngle));
+			y = nyoomError * Math.sin(Math.toRadians(travelAngle));
 		}
-		double yaw = sensors.getYaw() + 90; // godsdang it, hardware
-		drivetrain.mecanum_cartesian(x, y, turnSpeed, yaw);
+		double yaw = sensors.getYaw();
+		drivetrain.mecanum_cartesian(x, y, turnError, yaw);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
