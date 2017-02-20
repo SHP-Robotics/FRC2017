@@ -42,8 +42,8 @@ public class Camera extends VProcSubsystem {
 
 		// Mats are very memory expensive. Lets reuse this Mat.
 		mat = new Mat();
-		target[0] = 0;
-		target[1] = 0;
+		target[0] = 147;
+		target[1] = 115;
 	}
 
 	public void init() {

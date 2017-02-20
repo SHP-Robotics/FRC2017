@@ -48,8 +48,10 @@ public class ShooterShootVision extends CommandBase {
 		double turn = centerX == -1 ? 0 : centerX - camera.target[0];
 		// negative if to left of target, else positive
 		double drv = centerY == -1 ? 0 : centerY - camera.target[1];
+		turn = turn * 0.01;
+		turn = turn < -0.3 ? -0.3 : turn > 0.3 ? 0.3 : turn; 
 		// negative if to bottom of target, else positive
-		drivetrain.arcade(drv * 0.005, -turn * 0.005, false);
+		drivetrain.arcade(turn , drv * -0.01, false);
 		if (centerX == -1 || centerY == -1) {
 			return false;
 		} else {
@@ -71,5 +73,6 @@ public class ShooterShootVision extends CommandBase {
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted() {
+		end();
 	}
 }
