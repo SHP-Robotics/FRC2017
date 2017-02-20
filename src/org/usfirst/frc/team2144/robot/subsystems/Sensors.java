@@ -42,7 +42,7 @@ public class Sensors extends Subsystem {
 	}
 
 	public double getDisplacement() {
-		return Math.sqrt(Math.pow(navx.getDisplacementX(), 2) + Math.pow(navx.getDisplacementZ(), 2));
+		return Math.sqrt(Math.pow(navx.getDisplacementX(), 2) + Math.pow(navx.getDisplacementY(), 2));
 	}
 
 	public void initDefaultCommand() {
