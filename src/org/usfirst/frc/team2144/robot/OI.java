@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2144.robot;
 
+import org.usfirst.frc.team2144.robot.commands.ShooterShoot;
 import org.usfirst.frc.team2144.robot.commands.ShooterShootVision;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -10,14 +11,16 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-	
+
 	private Joystick left = new Joystick(0);
 	private Joystick right = new Joystick(1);
-		
+
 	private JoystickButton visionShoot = new JoystickButton(right, ControlMap.B_VISION_FIRE);
-	
+	private JoystickButton shootyShoot = new JoystickButton(right, ControlMap.B_NORMAL_FIRE);
+
 	public OI() {
 		visionShoot.whileHeld(new ShooterShootVision());
+		shootyShoot.whileHeld(new ShooterShoot());
 	}
 
 	public double getStickX() {
@@ -50,23 +53,19 @@ public class OI {
 	public boolean getStick2Mecanum() {
 		return right.getRawButton(ControlMap.B_MECANUM);
 	}
-	
-	public boolean getFireButton() {
-		return right.getRawButton(ControlMap.B_FIRE);
-	}
-	
+
 	public boolean getGearButton() {
 		return right.getRawButton(ControlMap.B_GEAR);
 	}
-	
+
 	public int getStick2POV() {
 		return right.getPOV();
 	}
-	
+
 	public double getIntakePower() {
-		return left.getRawButton(ControlMap.B_INTAKE) ? 1 : 0.1;
+		return left.getRawButton(ControlMap.B_INTAKE) ? 1 : 0.2;
 	}
-	
+
 	public boolean getClimbButton() {
 		return left.getRawButton(ControlMap.B_CLIMB);
 	}

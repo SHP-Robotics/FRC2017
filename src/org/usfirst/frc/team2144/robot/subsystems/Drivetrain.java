@@ -50,7 +50,11 @@ public class Drivetrain extends Subsystem {
 	public void arcade(double spd, double rot, boolean squared) {
 		robit.arcadeDrive(spd, rot, squared);
 	}
-
+	
+	public int average_encoders() {
+		return (Math.abs(e_front_left.get()) + Math.abs(e_back_left.get()) + Math.abs(e_front_right.get()) + Math.abs(e_back_right.get()))/4;
+	}
+	
 	public boolean have_encoders_reached_pos(int leftPos, int rightPos) {
 		if (has_left_encoder_reached_pos(leftPos) && has_right_encoder_reached_pos(rightPos)) {
 			return true;

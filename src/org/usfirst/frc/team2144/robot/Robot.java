@@ -3,6 +3,8 @@ package org.usfirst.frc.team2144.robot;
 
 import org.usfirst.frc.team2144.robot.commands.CommandBase;
 import org.usfirst.frc.team2144.robot.commands.VProc;
+import org.usfirst.frc.team2144.robot.commands.auto.ShooterAutoRed;
+import org.usfirst.frc.team2144.robot.commands.auto.Wheeeeeeeeeeeeeee;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -31,7 +33,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		chooser.addDefault("Default Auto", null);
-		// chooser.addObject("My Auto", new MyAutoCommand());
+		chooser.addObject("Red Auto", new ShooterAutoRed());
+		chooser.addObject("Wheeeeee", new Wheeeeeeeeeeeeeee());
 		SmartDashboard.putData("Auto mode", chooser);
 		CommandBase.init();
 	}

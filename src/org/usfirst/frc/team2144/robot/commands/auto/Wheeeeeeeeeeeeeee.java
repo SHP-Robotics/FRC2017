@@ -1,15 +1,13 @@
 package org.usfirst.frc.team2144.robot.commands.auto;
 
-import org.usfirst.frc.team2144.robot.commands.ShooterShootVision;
-
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class ShooterAutoRed extends CommandGroup {
+public class Wheeeeeeeeeeeeeee extends CommandGroup {
 
-	public ShooterAutoRed() {
+	public Wheeeeeeeeeeeeeee() {
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
 		// addSequential(new Command2());
@@ -26,9 +24,6 @@ public class ShooterAutoRed extends CommandGroup {
 		// e.g. if Command1 requires chassis, and Command2 requires arm,
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
-		System.out.print("Starting auto...");
-		addSequential(new GyroFOD(500, 0, 135, 0.5, 0.5));
-		System.out.println("Completed FOD.");
-		addSequential(new ShooterShootVision());
+		addSequential(new DerpGyroFOD(10000, 0, 180, 0.3, 0.7));
 	}
 }

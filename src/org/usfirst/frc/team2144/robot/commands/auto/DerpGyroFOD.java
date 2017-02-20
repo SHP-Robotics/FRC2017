@@ -6,7 +6,7 @@ import org.usfirst.frc.team2144.robot.commands.CommandBase;
 /**
  *
  */
-public class GyroFOD extends CommandBase {
+public class DerpGyroFOD extends CommandBase {
 
 	private double travelAngle, turnAngle, nyoomSpeed, turnSpeed;
 	private double linearDistance;
@@ -27,7 +27,7 @@ public class GyroFOD extends CommandBase {
 	 * @param turnSpeed
 	 *            - The speed [0..1.0] to turn at.
 	 */
-	public GyroFOD(double linearDistance, double travelAngle, double turnAngle, double nyoomSpeed, double turnSpeed) {
+	public DerpGyroFOD(double linearDistance, double travelAngle, double turnAngle, double nyoomSpeed, double turnSpeed) {
 		// Use requires() here to declare subsystem dependencies
 		requires(sensors);
 		requires(drivetrain);
@@ -83,7 +83,7 @@ public class GyroFOD extends CommandBase {
 		}
 
 		double yaw = sensors.getYaw(); // godsdang it, hardware
-		drivetrain.mecanum_cartesian(-x, -y, turnError, yaw); // what
+		drivetrain.mecanum_cartesian(-x, -y, turnSpeed, yaw); // what
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

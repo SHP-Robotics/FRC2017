@@ -28,7 +28,7 @@ public class ShooterShootVision extends CommandBase {
 	protected void execute() {
 		shooter.setFlywheel(Constants.D_SHOOTER_MAN_PWR);
 		if (driveToTarget()) {
-			if (Timer.getFPGATimestamp() > startSpool + 1.0) {
+			if (Timer.getFPGATimestamp() > startSpool + Constants.D_SHOOTER_SPOOL_DELAY) {
 				shooter.setIntake(Constants.D_SHOOTER_INTAKE_PWR);
 			} else {
 				shooter.setIntake(0);
@@ -48,7 +48,7 @@ public class ShooterShootVision extends CommandBase {
 		double turn = centerX == -1 ? 0 : centerX - camera.target[0];
 		// negative if to left of target, else positive
 		double drv = centerY == -1 ? 0 : centerY - camera.target[1];
-		turn = turn * 0.01;
+		turn = turn * Constants.K_TURN_MULTIPLIER;
 		turn = turn < -0.3 ? -0.3 : turn > 0.3 ? 0.3 : turn; 
 		// negative if to bottom of target, else positive
 		drivetrain.arcade(turn , drv * -0.01, false);
