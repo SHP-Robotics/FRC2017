@@ -9,7 +9,7 @@ import org.usfirst.frc.team2144.robot.commands.CommandBase;
 public class GyroFOD extends CommandBase {
 
 	private double travelAngle, turnAngle, nyoomSpeed, turnSpeed;
-	private int linearDistance;
+	private double linearDistance;
 	private boolean turnComplete = false, distanceComplete = false;
 
 	/**
@@ -27,15 +27,25 @@ public class GyroFOD extends CommandBase {
 	 * @param turnSpeed
 	 *            - The speed [0..1.0] to turn at.
 	 */
-	public GyroFOD(int linearDistance, double travelAngle, double turnAngle, double nyoomSpeed, double turnSpeed) {
+	public GyroFOD(double linearDistance, double travelAngle, double turnAngle, double nyoomSpeed, double turnSpeed) {
 		// Use requires() here to declare subsystem dependencies
 		requires(sensors);
 		requires(drivetrain);
 		this.linearDistance = linearDistance;
 		this.travelAngle = travelAngle;
-		this.turnAngle = turnAngle;
+		this.turnAngle = normalizeAngle(turnAngle);
 		this.nyoomSpeed = nyoomSpeed;
 		this.turnSpeed = Math.abs(turnSpeed);
+	}
+	
+	private double normalizeAngle(double angle) {
+		while (angle < -180) {
+			angle += 360;
+		}
+		while (angle > 180) {
+			angle -= 360;
+		}
+		return angle;
 	}
 
 	// Called just before this Command runs the first time
@@ -56,7 +66,7 @@ public class GyroFOD extends CommandBase {
 		} else {
 			turnComplete = false;
 			turnSpeed = this.turnSpeed;
-			if (sensors.getYaw() > turnAngle) {
+			if (sensors.getYaw() < normalizeAngle(turnAngle + 180) && sensors.getYaw() > normalizeAngle(turnAngle)) {
 				turnSpeed = -turnSpeed;
 			}
 		}
@@ -71,7 +81,7 @@ public class GyroFOD extends CommandBase {
 			x = nyoomSpeed * Math.cos(Math.toRadians(travelAngle));
 			y = nyoomSpeed * Math.sin(Math.toRadians(travelAngle));
 		}
-		double yaw = sensors.getYaw() + 90; // godsdang it, hardware
+		double yaw = sensors.getYaw(); // godsdang it, hardware
 		drivetrain.mecanum_cartesian(x, y, turnSpeed, yaw);
 	}
 

@@ -23,7 +23,17 @@ public class GyroTurn extends CommandBase {
 		requires(sensors);
 		requires(drivetrain);
 		this.speed = -speed;
-		this.angle = angle;
+		this.angle = normalizeAngle(angle);
+	}
+	
+	private double normalizeAngle(double angle) {
+		while (angle < -180) {
+			angle += 360;
+		}
+		while (angle > 180) {
+			angle -= 360;
+		}
+		return angle;
 	}
 
 	// Called just before this Command runs the first time
@@ -38,7 +48,7 @@ public class GyroTurn extends CommandBase {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		if (sensors.getYaw() < angle) {
+		if (sensors.getYaw() < normalizeAngle(angle + 180) && sensors.getYaw() > normalizeAngle(angle)) {
 			drivetrain.arcade(0, speed, false);
 		} else {
 			drivetrain.arcade(0, -speed, false);
