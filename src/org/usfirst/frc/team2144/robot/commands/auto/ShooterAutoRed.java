@@ -27,7 +27,7 @@ public class ShooterAutoRed extends CommandGroup {
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
 		System.out.print("Starting auto...");
-		addSequential(new GyroFOD(500, 0, 135, 0.5, 0.5));
+		addSequential(new GyroFOD(1000, 0, 135, 0.5, 0.5), 10);
 		System.out.println("Completed FOD.");
 		addSequential(new ShooterShootVision());
 	}
