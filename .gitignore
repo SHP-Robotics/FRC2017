@@ -3,3 +3,4 @@
 
 *.class
 dist/FRCUserProgram.jar
+build/jars/navx_frc.jar

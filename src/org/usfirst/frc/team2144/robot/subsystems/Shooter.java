@@ -22,6 +22,7 @@ public class Shooter extends Subsystem {
 		encoder = new Encoder(RobotMap.FLYWHEEL_ENC_A, RobotMap.FLYWHEEL_ENC_B);
 		flywheel = new Talon(RobotMap.FLYWHEEL_SHOOTER);
 		intake = new Talon(RobotMap.FLYWHEEL_INTAKE);
+		flywheel.setSafetyEnabled(false);
 	}
 
 	public void setIntake(double power) {

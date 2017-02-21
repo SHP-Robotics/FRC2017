@@ -4,10 +4,10 @@ public class Constants {
 
 	// tolerances
 	public static final double K_SHOOTER_TOLERANCE = 0.5; // in rps
-	public static final double K_VISION_TOLERANCE = 7; // in px
+	public static final double K_VISION_TOLERANCE = 10; // in px
 	public static final double K_TURN_TOLERANCE = 2; // in deg
 	public static final double K_DISP_TOLERANCE = 3; // in enc
-	public static final double K_TURN_MULTIPLIER = 0.02;
+	public static final double K_TURN_MULTIPLIER = 0.01;
 
 	// PID
 	public static final double K_GEAR_P = 15;
