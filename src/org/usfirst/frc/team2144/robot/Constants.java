@@ -23,6 +23,6 @@ public class Constants {
 	public static final double D_SHOOTER_INTAKE_PWR = -0.5;
 
 	public static final double D_GEAR_OPEN = 0.2377;
-	public static final double D_GEAR_CLOSE = 0.1154;
+	public static final double D_GEAR_CLOSE = 0.1354;
 	public static final double D_SHOOTER_SPOOL_DELAY = 1.5;
 }
