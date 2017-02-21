@@ -2,7 +2,7 @@
 package org.usfirst.frc.team2144.robot;
 
 import org.usfirst.frc.team2144.robot.commands.CommandBase;
-import org.usfirst.frc.team2144.robot.commands.VProc;
+import org.usfirst.frc.team2144.robot.commands.auto.ShooterAutoBlue;
 import org.usfirst.frc.team2144.robot.commands.auto.ShooterAutoRed;
 import org.usfirst.frc.team2144.robot.commands.auto.Wheeeeeeeeeeeeeee;
 
@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -34,6 +33,7 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		chooser.addDefault("Default Auto", null);
 		chooser.addObject("Red Auto", new ShooterAutoRed());
+		chooser.addObject("Blue Auto", new ShooterAutoBlue());
 		chooser.addObject("Wheeeeee", new Wheeeeeeeeeeeeeee());
 		SmartDashboard.putData("Auto mode", chooser);
 		CommandBase.init();

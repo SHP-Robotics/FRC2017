@@ -18,6 +18,7 @@ public class Drivetrain extends Subsystem {
 	public RobotDrive robit;
 	private Talon m_front_left, m_back_left, m_front_right, m_back_right;
 	private Encoder e_back_left, e_back_right, e_front_left, e_front_right;
+	private boolean e_bl_rev = false, e_br_rev = false, e_fl_rev = false, e_fr_rev = false;
 
 	public Drivetrain() {
 		super("Drivetrain");
@@ -32,6 +33,10 @@ public class Drivetrain extends Subsystem {
 		robit = new RobotDrive(m_front_left, m_back_left, m_front_right, m_back_right);
 		m_front_right.setInverted(true);
 		m_back_right.setInverted(true);
+		e_front_left.setReverseDirection(e_fl_rev);
+		e_back_left.setReverseDirection(e_bl_rev);
+		e_front_right.setReverseDirection(e_fr_rev);
+		e_back_right.setReverseDirection(e_br_rev);
 	}
 
 	public void mecanum_cartesian(double x, double y, double rotation, double gyro) {
@@ -50,11 +55,40 @@ public class Drivetrain extends Subsystem {
 	public void arcade(double spd, double rot, boolean squared) {
 		robit.arcadeDrive(spd, rot, squared);
 	}
-	
-	public int average_encoders() {
-		return (Math.abs(e_front_left.get()) + Math.abs(e_back_left.get()) + Math.abs(e_front_right.get()) + Math.abs(e_back_right.get()))/4;
+
+	public void hacky_enc() {
+		if (e_front_left.getRate() < 0) {
+			e_fl_rev = !e_fl_rev;
+		}
+		if (e_back_left.getRate() < 0) {
+			e_bl_rev = !e_bl_rev;
+		}
+		if (e_front_right.getRate() < 0) {
+			e_fr_rev = !e_fr_rev;
+		}
+		if (e_back_right.getRate() < 0) {
+			e_br_rev = !e_br_rev;
+		}
+		e_front_left.setReverseDirection(e_fl_rev);
+		e_back_left.setReverseDirection(e_bl_rev);
+		e_front_right.setReverseDirection(e_fr_rev);
+		e_back_right.setReverseDirection(e_br_rev);
 	}
-	
+
+	public void reset_hacky_enc() {
+		e_bl_rev = e_br_rev = e_fl_rev = e_fr_rev = false;
+		e_front_left.setReverseDirection(e_fl_rev);
+		e_back_left.setReverseDirection(e_bl_rev);
+		e_front_right.setReverseDirection(e_fr_rev);
+		e_back_right.setReverseDirection(e_br_rev);
+	}
+
+	public int average_encoders() {
+		this.hacky_enc();
+		return (Math.abs(e_front_left.get()) + Math.abs(e_back_left.get()) + Math.abs(e_front_right.get())
+				+ Math.abs(e_back_right.get())) / 4;
+	}
+
 	public boolean have_encoders_reached_pos(int leftPos, int rightPos) {
 		if (has_left_encoder_reached_pos(leftPos) && has_right_encoder_reached_pos(rightPos)) {
 			return true;
@@ -90,6 +124,7 @@ public class Drivetrain extends Subsystem {
 	}
 
 	public void reset_encoders() {
+		reset_hacky_enc();
 		reset_left_encoder();
 		reset_right_encoder();
 	}

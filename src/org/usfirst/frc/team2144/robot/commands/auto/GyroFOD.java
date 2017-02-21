@@ -50,6 +50,7 @@ public class GyroFOD extends CommandBase {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
+		System.out.println("FOD Starting");
 		sensors.resetYaw();
 		drivetrain.reset_encoders();
 	}
@@ -61,7 +62,11 @@ public class GyroFOD extends CommandBase {
 		turnError = (turnAngle - normalizeAngle(sensors.getYaw())) * 0.05;
 		turnError = turnError > turnSpeed ? turnSpeed : turnError < -turnSpeed ? -turnSpeed : turnError;
 
-		nyoomError = Math.sqrt(linearDistance - drivetrain.average_encoders()) * 0.05;
+		nyoomError = Math.sqrt(Math.abs(linearDistance - drivetrain.average_encoders()))
+				* ((linearDistance - drivetrain.average_encoders()) < 0 ? -0.05 : 0.05);
+		// System.out.println("DEBUG - nyoomError = " + nyoomError);
+		// System.out.println("DEBUG - Aenc = " +
+		// drivetrain.average_encoders());
 		nyoomError = nyoomError > nyoomSpeed ? nyoomSpeed : nyoomError < -nyoomSpeed ? -nyoomSpeed : nyoomError;
 
 		if (normalizeAngle(sensors.getYaw()) > turnAngle - Constants.K_TURN_TOLERANCE
@@ -93,6 +98,7 @@ public class GyroFOD extends CommandBase {
 
 	// Called once after isFinished returns true
 	protected void end() {
+		System.out.println("FOD Complete");
 		drivetrain.arcade(0, 0);
 	}
 

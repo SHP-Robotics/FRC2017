@@ -22,6 +22,8 @@ public class RobotMap {
 	
 	public static final int CLIMBER_MOTOR = 8;
 	
+	public static final int FLYWHEEL_INTAKE_2 = 9;
+	
 	// DIO
 	public static final int FLYWHEEL_ENC_A = 8;
 	public static final int FLYWHEEL_ENC_B = 9;
@@ -37,5 +39,4 @@ public class RobotMap {
 	
 	// Analog
 	public static final int GEAR_POT = 0;
-	
 }

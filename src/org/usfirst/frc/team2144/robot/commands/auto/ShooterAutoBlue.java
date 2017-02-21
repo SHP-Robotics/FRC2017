@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class ShooterAutoRed extends CommandGroup {
+public class ShooterAutoBlue extends CommandGroup {
 
-	public ShooterAutoRed() {
+	public ShooterAutoBlue() {
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
 		// addSequential(new Command2());
@@ -26,7 +26,7 @@ public class ShooterAutoRed extends CommandGroup {
 		// e.g. if Command1 requires chassis, and Command2 requires arm,
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
-		addSequential(new GyroFOD(1000, 0, 135, 0.5, 0.3), 3);
+		addSequential(new GyroFOD(1000, 0, -135, 0.5, 0.3), 3);
 		addSequential(new ShooterShootVision());
 	}
 }
