@@ -27,7 +27,7 @@ public abstract class CommandBase extends Command {
 	public static Drivetrain drivetrain = new Drivetrain();
 	public static Shooter shooter = new Shooter();
 	public static Camera camera = new Camera(); // change this to new Camera() to enable vproc
-	public static Intake intake = new Intake();
+	public static Intake intake; // = new Intake();
 	public static GearManip gearManip = new GearManip();
 	public static Climber climber = new Climber();
 	public static Sensors sensors = new Sensors();

@@ -18,6 +18,7 @@ public class VProc extends CommandBase {
 		// Use requires() here to declare subsystem dependencies
 		super("VProc");
 		requires(camera);
+		setRunWhenDisabled(true);
 	}
 
 	// Called just before this Command runs the first time
