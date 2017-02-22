@@ -55,7 +55,7 @@ public class OI {
 	}
 
 	public boolean getGearButton() {
-		return right.getRawButton(ControlMap.B_GEAR);
+		return left.getRawButton(ControlMap.B_GEAR);
 	}
 
 	public int getStick2POV() {

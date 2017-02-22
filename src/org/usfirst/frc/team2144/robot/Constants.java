@@ -10,7 +10,7 @@ public class Constants {
 	public static final double K_TURN_MULTIPLIER = 0.01;
 
 	// PID
-	public static final double K_GEAR_P = 15;
+	public static final double K_GEAR_P = 25;
 	public static final double K_GEAR_I = 0;
 	public static final double K_GEAR_D = 0;
 

@@ -26,7 +26,7 @@ public class Shooter extends Subsystem {
 	}
 
 	public void setIntake(double power) {
-		intake2.set(power * -2);
+		intake2.set(power * 2);
 		intake.set(power);
 	}
 
